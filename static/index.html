@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400..700;1,400..700&family=IBM+Plex+Serif:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/styles.css">
+    <title>Mushroom Classification</title>
+</head>
+<body>
+    <div class="nature-decoration leaf-1"></div>
+    <div class="nature-decoration leaf-2"></div>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="logo">
+                <a href="#" id="logo-link">
+                    <div class="logo-placeholder">MushroomAI</div>
+                    <!-- Reemplazar el div anterior con: -->
+                    <!-- <img src="/static/logo.png" alt="MushroomAI Logo"> -->
+                </a>
+            </div>
+            <div class="nav-buttons">
+                <button class="nav-button" id="new-classification-btn">Realizar Consulta</button>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <!-- Sección de introducción -->
+        <section class="intro-section" id="intro-section">
+            <div class="container">
+                <h1>Mushroom Classification Tool</h1>
+                <p class="intro-text">Bienvenido a nuestra herramienta de clasificación de hongos. Utilizando inteligencia artificial, podemos predecir si un hongo es comestible o venenoso basándonos en sus características físicas. Completa el formulario paso a paso para obtener resultados precisos.</p>
+                
+                <div class="mushroom-gallery">
+                    <div class="mushroom-card">
+                        <div class="mushroom-img img-placeholder"></div>
+                        <h3>Hongos Comestibles</h3>
+                        <p>Deliciosos y seguros para consumo</p>
+                    </div>
+                    <div class="mushroom-card">
+                        <div class="mushroom-img img-placeholder danger"></div>
+                        <h3>Hongos Venenosos</h3>
+                        <p>Peligrosos y potencialmente letales</p>
+                    </div>
+                    <div class="mushroom-card">
+                        <div class="mushroom-img img-placeholder neutral"></div>
+                        <h3>Identificación Precisa</h3>
+                        <p>Evita confusiones potencialmente peligrosas</p>
+                    </div>
+                </div>
+                
+                <button class="cta-button" id="start-classification-btn">Comenzar Clasificación</button>
+            </div>
+        </section>
+
+        <!-- Sección de clasificación -->
+        <section class="classification-section" id="classification-section" style="display: none;">
+            <div class="container">
+                <h2>Complete each step to determine if your mushroom is edible or poisonous.</h2>
+
+                <!-- Indicador de carga -->
+                <div id="loading-indicator" class="loading-indicator">
+                    <div class="spinner"></div>
+                    <p>Cargando formulario...</p>
+                </div>
+
+                <div id="error-message" class="error-message" style="display: none;">
+                    <p>Error al cargar los datos. Por favor, intenta de nuevo más tarde.</p>
+                    <button onclick="window.location.reload()">Reintentar</button>
+                </div>
+
+                <div class="progress-container" style="display: none;" id="form-container">
+                    <div class="progress-bar">
+                        <div class="progress-bar-fill" id="progress-fill"></div>
+                    </div>
+
+                    <form id="mushroom-form">
+                        <div class="form-navigation">
+                            <button type="button" class="nav-button prev-button" id="prev-btn" disabled>
+                                Previous
+                            </button>
+                            <button type="button" class="nav-button next-button" id="next-btn">
+                                Next
+                            </button>
+                            <button type="submit" class="nav-button submit-button" id="submit-btn" style="display: none;">
+                                Classify Mushroom
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <div id="result" class="result" style="display: none;">
+                </div>
+
+                <div class="new-query-container" id="new-query-container" style="display: none;">
+                    <button class="cta-button" id="new-query-btn">Realizar Nueva Consulta</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección de historial -->
+        <section class="history-section" id="history-section">
+            <div class="container">
+                <h2>Historial de Predicciones</h2>
+                <p class="section-intro">Aquí podrás ver tu historial de predicciones anteriores.</p>
+                
+                <div class="history-placeholder">
+                    <p>El historial de predicciones estará disponible próximamente.</p>
+                    <p class="small-text">Esta funcionalidad requiere integración con una base de datos.</p>
+                </div>
+
+                <!-- Tabla de historial (para futura implementación) -->
+                <table class="history-table" style="display: none;">
+                    <thead>
+                        <tr>
+                            <th>Fecha</th>
+                            <th>Predicción</th>
+                            <th>Confianza</th>
+                            <th>Detalles</th>
+                        </tr>
+                    </thead>
+                    <tbody id="history-table-body">
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>MushroomAI</h3>
+                    <p>Una herramienta de inteligencia artificial para identificación segura de hongos.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Enlaces Útiles</h3>
+                    <ul>
+                        <li><a href="#">Inicio</a></li>
+                        <li><a href="#classification-section">Clasificación</a></li>
+                        <li><a href="#history-section">Historial</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contacto</h3>
+                    <p>Email: info@mushroomai.com</p>
+                    <p>Tel: (123) 456-7890</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 MushroomAI. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>
