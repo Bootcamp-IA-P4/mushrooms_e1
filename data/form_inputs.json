@@ -1,0 +1,108 @@
+{
+    "bruises": [
+        "bruises",
+        "no"
+    ],
+    "odor": [
+        "almond",
+        "anise",
+        "creosote",
+        "fishy",
+        "foul",
+        "musty",
+        "none",
+        "pungent",
+        "spicy"
+    ],
+    "gill-spacing": [
+        "close",
+        "crowded"
+    ],
+    "gill-size": [
+        "broad",
+        "narrow"
+    ],
+    "gill-color": [
+        "black",
+        "brown",
+        "buff",
+        "chocolate",
+        "gray",
+        "green",
+        "orange",
+        "pink",
+        "purple",
+        "red",
+        "white",
+        "yellow"
+    ],
+    "stalk-root": [
+        "bulbous",
+        "club",
+        "equal",
+        "missing",
+        "rooted"
+    ],
+    "stalk-surface-above-ring": [
+        "fibrous",
+        "scaly",
+        "silky",
+        "smooth"
+    ],
+    "stalk-surface-below-ring": [
+        "fibrous",
+        "scaly",
+        "silky",
+        "smooth"
+    ],
+    "stalk-color-above-ring": [
+        "Cinnamon-Yellow",
+        "Red-Orange",
+        "brown",
+        "buff",
+        "gray",
+        "pink",
+        "white"
+    ],
+    "stalk-color-below-ring": [
+        "Cinnamon-Yellow",
+        "Red-Orange",
+        "brown",
+        "buff",
+        "gray",
+        "pink",
+        "white"
+    ],
+    "ring-type": [
+        "evanescent",
+        "flaring",
+        "large",
+        "none",
+        "pendant"
+    ],
+    "spore-print-color": [
+        "Otros",
+        "black",
+        "brown",
+        "chocolate",
+        "green",
+        "white"
+    ],
+    "population": [
+        "abundant",
+        "clustered",
+        "numerous",
+        "scattered",
+        "several",
+        "solitary"
+    ],
+    "habitat": [
+        "grasses",
+        "leaves",
+        "meadows",
+        "paths",
+        "urban",
+        "waste",
+        "woods"
+    ]
+}
