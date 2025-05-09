@@ -1,7 +1,7 @@
 from fastapi import FastAPI, Query, HTTPException
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
-from pydantic import BaseModel, field_validator
+from pydantic import BaseModel, field_validator, ConfigDict
 from typing import Dict, List, Optional
 import pickle
 import json
@@ -55,6 +55,9 @@ class MushoomFeatures(BaseModel):
     spore_print_color: str
     population: str
     habitat: str
+
+    # ✅ Nueva configuración Pydantic v2
+    model_config = ConfigDict(populate_by_name=True)
     
     # Validators to check if values are allowed (updated for Pydantic v2)
     @field_validator("*")
@@ -72,9 +75,6 @@ class MushoomFeatures(BaseModel):
             allowed_values = ", ".join(form_inputs[field_name])
             raise ValueError(f"Value '{v}' is not valid for {field_name}. Allowed values: {allowed_values}")
         return v
-    
-    class Config:
-        validate_by_name = True  # Updated from allow_population_by_field_name for Pydantic v2
 
 class PredictionResponse(BaseModel):
     prediction: str
