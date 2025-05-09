@@ -1,14 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/static/img/veneno.png" type="image/png">
+    <link rel="shortcut icon" href="/static/img/veneno.png" type="image/png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400..700;1,400..700&family=IBM+Plex+Serif:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400..700;1,400..700&family=IBM+Plex+Serif:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="/static/styles.css">
-    <title>Mushroom Classification</title>
+    <title>The Sporest</title>
 </head>
+
 <body>
     <div class="nature-decoration leaf-1"></div>
     <div class="nature-decoration leaf-2"></div>
@@ -17,9 +23,7 @@
         <div class="navbar-container">
             <div class="logo">
                 <a href="#" id="logo-link">
-                    <div class="logo-placeholder">MushroomAI</div>
-                    <!-- Reemplazar el div anterior con: -->
-                    <!-- <img src="/static/logo.png" alt="MushroomAI Logo"> -->
+                    <img class="logo-img" src="/static/img/mushl.png" alt="MushroomAI Logo">
                 </a>
             </div>
             <div class="nav-buttons">
@@ -32,9 +36,13 @@
         <!-- Sección de introducción -->
         <section class="intro-section" id="intro-section">
             <div class="container">
-                <h1>Mushroom Classification Tool</h1>
-                <p class="intro-text">Bienvenido a nuestra herramienta de clasificación de hongos. Utilizando inteligencia artificial, podemos predecir si un hongo es comestible o venenoso basándonos en sus características físicas. Completa el formulario paso a paso para obtener resultados precisos.</p>
-                
+                <div class="intro-logo"><img src="/static/img/mushl.png" alt="logo"></div>
+                <h1>The Sporest App</h1>
+                <p class="intro-text">Si estás aquí muy probablemente te interese conocer más acerca del maravilloso
+                    mundo de las setas y quieres saber si las que has encontrado son comestibles o venenosas. En ese
+                    caso, estás en el lugar correcto. Bienvenidx a nuestra herrramienta de clasificación basada en el
+                    algoritmno de random forest que determina si una seta es comestible o venenosa.</p>
+
                 <div class="mushroom-gallery">
                     <div class="mushroom-card">
                         <div class="mushroom-img img-placeholder"></div>
@@ -52,7 +60,7 @@
                         <p>Evita confusiones potencialmente peligrosas</p>
                     </div>
                 </div>
-                
+
                 <button class="cta-button" id="start-classification-btn">Comenzar Clasificación</button>
             </div>
         </section>
@@ -60,7 +68,7 @@
         <!-- Sección de clasificación -->
         <section class="classification-section" id="classification-section" style="display: none;">
             <div class="container">
-                <h2>Complete each step to determine if your mushroom is edible or poisonous.</h2>
+                <h2>Conteste todas las preguntas para saber si su seta es comestible o venenosa</h2>
 
                 <!-- Indicador de carga -->
                 <div id="loading-indicator" class="loading-indicator">
@@ -81,13 +89,14 @@
                     <form id="mushroom-form">
                         <div class="form-navigation">
                             <button type="button" class="nav-button prev-button" id="prev-btn" disabled>
-                                Previous
+                                Anterior
                             </button>
                             <button type="button" class="nav-button next-button" id="next-btn">
-                                Next
+                                Siguiente
                             </button>
-                            <button type="submit" class="nav-button submit-button" id="submit-btn" style="display: none;">
-                                Classify Mushroom
+                            <button type="submit" class="nav-button submit-button" id="submit-btn"
+                                style="display: none;">
+                                Clasificar Seta
                             </button>
                         </div>
                     </form>
@@ -107,7 +116,7 @@
             <div class="container">
                 <h2>Historial de Predicciones</h2>
                 <p class="section-intro">Aquí podrás ver tu historial de predicciones anteriores.</p>
-                
+
                 <div class="history-placeholder">
                     <p>El historial de predicciones estará disponible próximamente.</p>
                     <p class="small-text">Esta funcionalidad requiere integración con una base de datos.</p>
@@ -135,8 +144,8 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <h3>MushroomAI</h3>
-                    <p>Una herramienta de inteligencia artificial para identificación segura de hongos.</p>
+                    <h3>The Sporest</h3>
+                    <p>La mejor herramienta de inteligencia artificial para identificación segura de hongos.</p>
                 </div>
                 <div class="footer-section">
                     <h3>Enlaces Útiles</h3>
@@ -153,11 +162,15 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2025 MushroomAI. Todos los derechos reservados.</p>
+                <p>&copy; 2025 The Sporest. Todos los derechos reservados.</p>
+            </div>
+            <div class="mushroom-corner-container">
+                <img class="footer-img" src="/static/img/veneno.png" alt="Mushrooms">
             </div>
         </div>
     </footer>
 
     <script src="/static/script.js"></script>
 </body>
+
 </html>

@@ -36,7 +36,7 @@ body {
     background-image: 
       radial-gradient(circle at 10% 90%, rgba(24, 75, 33, 0.05) 0%, transparent 30%),
       radial-gradient(circle at 90% 10%, rgba(86, 40, 23, 0.05) 0%, transparent 30%),
-      linear-gradient(to bottom, var(--color-dark), #121212);
+      linear-gradient(to bottom, var(--color-dark), #161d12);
 }
 
 main {
@@ -74,7 +74,7 @@ section {
     top: 0;
     left: 0;
     width: 100%;
-    height: 80px;
+    height: 120px;
     z-index: 1000;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
     backdrop-filter: blur(10px);
@@ -111,6 +111,12 @@ section {
     font-weight: 700;
 }
 
+.logo-img {
+    max-width: 90px;
+    max-height: 90px;
+    margin-right: 1rem;
+}
+
 .nav-buttons {
     display: flex;
     gap: 1rem;
@@ -118,7 +124,23 @@ section {
 
 /* Intro Section */
 .intro-section {
-    padding-top: 2rem;
+    padding-top: 1rem;
+}
+
+.intro-logo{
+    text-align: center;
+    margin-top: 0.5rem;
+}
+
+.intro-logo img {
+    width: 100px;
+    height: auto;
+    margin: 0 auto;
+    display: block;
+}
+
+.intro-section h1 {
+    margin-top: 0.5rem;
 }
 
 .intro-text {
@@ -159,6 +181,8 @@ section {
     margin-bottom: 1rem;
     background-size: cover;
     background-position: center;
+    overflow: hidden;
+    position: relative;
 }
 
 .img-placeholder {
@@ -174,21 +198,35 @@ section {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='30' r='30' fill='%23f1eded33'/%3E%3Cpath d='M20,90 Q50,60 80,90' stroke='%23f1eded33' stroke-width='8' fill='none'/%3E%3C/svg%3E");
-    background-size: 60% auto;
+    background-image: url('/static/img/comestibles2.jpeg');
+    background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    opacity: 0.7;
+    opacity: 0.9;
+    transition: transform 0.5s ease;
 }
 
 .img-placeholder.danger {
     background-color: var(--color-coral);
 }
 
+.img-placeholder.danger:before {
+    background-image: url('/static/img/poison.jpg');
+}
+
 .img-placeholder.neutral {
     background-color: var(--color-light-yellow);
 }
 
+.img-placeholder.neutral:before {
+    background-image: url('/static/img/taxonomia.jpg');
+}
+
+.mushroom-card:hover .img-placeholder:before,
+.mushroom-card:hover .img-placeholder.danger:before,
+.mushroom-card:hover .img-placeholder.neutral:before {
+    transform: scale(1.1);
+}
 .mushroom-card h3 {
     color: var(--color-light-yellow);
     font-size: 1.3rem;
@@ -209,7 +247,7 @@ section {
     font-size: 1.1rem;
     border-radius: 30px;
     cursor: pointer;
-    font-family: var(--font-main);
+    font-family: var(--font-titles);
     font-weight: 600;
     transition: all 0.3s;
     display: block;
@@ -279,11 +317,45 @@ section {
 }
 
 /* Footer */
+.mushroom-corner-container {
+    position: absolute;
+    bottom: -10px;
+    margin-left: 200px;
+    right: 0;
+    width: 290px; 
+    height: 200px; 
+    overflow: visible;
+    pointer-events: none;
+    z-index: 5;
+}
+
 .footer {
     background-color: var(--color-dark-light);
     padding: 3rem 0 1rem;
     margin-top: 2rem;
+    position: relative;
+    overflow: hidden;
+    padding-bottom: 20px;
 }
+
+.footer .container {
+    position: relative;
+    padding-bottom: 30px; 
+}
+
+
+.footer-img {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 200px;
+    height: auto;
+    max-height: none;
+    border-radius: 0;
+    margin: 0;
+    transform: scale(1.2) translateY(20px);
+}
+
 
 .footer-content {
     display: flex;
@@ -452,18 +524,43 @@ label {
 select {
     width: 100%;
     padding: 12px;
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: rgba(45, 30, 32, 0.9);
     border: 1px solid var(--color-rosepale-dark);
     border-radius: 4px;
     color: var(--color-white);
     font-family: var(--font-main);
     transition: all 0.2s;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23c9cba3' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 16px;
+    padding-right: 30px;
+    cursor: pointer;
 }
 
 select:focus {
     outline: none;
     border-color: var(--color-leaf);
     box-shadow: 0 0 0 2px rgba(201, 203, 163, 0.3);
+}
+
+select option[value=""] {
+    font-style: italic;
+    color: var(--color-light-yellow);
+}
+
+select option {
+    background-color: var(--color-dark);
+    color: var(--color-white);
+    padding: 10px;
+}
+
+/* Estilo para selects incompletos */
+.campo-requerido:invalid {
+    border-color: var(--color-coral);
 }
 
 /* Botones de navegación */
@@ -495,6 +592,7 @@ select:focus {
 .nav-button:disabled {
     background-color: rgba(114, 61, 70, 0.5);
     cursor: not-allowed;
+    opacity: 0.7;
 }
 
 .submit-button {
@@ -535,28 +633,29 @@ select:focus {
 /* Animación de naturaleza */
 .nature-decoration {
     position: fixed;
-    width: 100px;
-    height: 100px;
-    opacity: 0.1;
+    width: 200px;
+    height: 200px;
+    opacity: 0.5;
     z-index: -1;
     pointer-events: none;
 }
 
 .leaf-1 {
-    top: 10%;
+    top: 20%;
     left: 5%;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23c9cba3'%3E%3Cpath d='M17,8C8,10,5.9,16.17,3.82,21.34L5.71,22l1-2.3A4.49,4.49,0,0,0,8,20C19,20,22,3,22,3,21,5,14,5.25,9,6.25S2,11.5,2,13.5a6.22,6.22,0,0,0,1.75,3.75C7,8,17,8,17,8Z'/%3E%3C/svg%3E");
+    background-image: url('/static/img/mush1.png');
     background-size: contain;
-    animation: float 15s infinite ease-in-out;
+    animation: float 5s infinite ease-in-out;
 }
 
 .leaf-2 {
     bottom: 20%;
     right: 10%;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23e26d5c'%3E%3Cpath d='M17,8C8,10,5.9,16.17,3.82,21.34L5.71,22l1-2.3A4.49,4.49,0,0,0,8,20C19,20,22,3,22,3,21,5,14,5.25,9,6.25S2,11.5,2,13.5a6.22,6.22,0,0,0,1.75,3.75C7,8,17,8,17,8Z'/%3E%3C/svg%3E");
+    background-image: url("/static/img/mush.png");
     background-size: contain;
+    background-repeat: no-repeat;
     transform: rotate(180deg);
-    animation: float 20s infinite ease-in-out reverse;
+    animation: float 6s infinite ease-in-out reverse;
 }
 
 @keyframes float {
