@@ -1,9 +1,12 @@
-from fastapi import FastAPI, Query, HTTPException
+from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel, field_validator
-from typing import Dict, List, Optional
+from typing import Dict
 import pickle
 import json
 import os
+import pandas as pd
+from db.database import SessionLocal
+from db.crud import save_prediction, get_recent_predictions
 import uvicorn
 from fastapi.middleware.cors import CORSMiddleware
 
@@ -38,7 +41,7 @@ app.add_middleware(
     allow_headers=["*"],  # Allows all headers
 )
 
-class MushoomFeatures(BaseModel):
+class MushroomFeatures(BaseModel):
     bruises: str
     odor: str
     gill_spacing: str
@@ -91,7 +94,7 @@ def get_form_inputs():
         raise HTTPException(status_code=500, detail="Form inputs file not loaded properly")
 
 @app.post("/predict", response_model=PredictionResponse)
-def predict_mushroom(features: MushoomFeatures):
+def predict_mushroom(features: MushroomFeatures):
     try:
         # Convert features to DataFrame format expected by the model
         features_dict = {
@@ -123,6 +126,11 @@ def predict_mushroom(features: MushoomFeatures):
         prediction = "edible" if prediction_numeric == 0 else "poisonous"
         probability = float(prediction_proba[prediction_numeric])
         
+        # Save prediction to the database
+        db = SessionLocal()
+        save_prediction(db, prediction)
+        db.close()
+
         return {
             "prediction": prediction,
             "probability": probability,
@@ -131,6 +139,21 @@ def predict_mushroom(features: MushoomFeatures):
         
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Prediction error: {str(e)}")
+    
+@app.get("/predictions")
+def get_predictions(limit: int = 5):
+    try:
+        db = SessionLocal()
+        predictions = get_recent_predictions(db, limit)
+        db.close()
+
+        return [
+            {"id": str(pred.id), "result": pred.prediction_result, "created_at": pred.created_at}
+            for pred in predictions
+        ]
+
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Error fetching predictions: {str(e)}")
 
 if __name__ == "__main__":
     uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)
