@@ -56,6 +56,9 @@ class MushroomFeatures(BaseModel):
     spore_print_color: str
     population: str
     habitat: str
+
+    # ✅ Nueva configuración Pydantic v2
+    model_config = ConfigDict(populate_by_name=True)
     
     # Validators to check if values are allowed (updated for Pydantic v2)
     @field_validator("*")
@@ -73,17 +76,26 @@ class MushroomFeatures(BaseModel):
             allowed_values = ", ".join(form_inputs[field_name])
             raise ValueError(f"Value '{v}' is not valid for {field_name}. Allowed values: {allowed_values}")
         return v
-    
-    class Config:
-        validate_by_name = True  # Updated from allow_population_by_field_name for Pydantic v2
 
 class PredictionResponse(BaseModel):
     prediction: str
     probability: float
     features: Dict
 
-@app.get("/")
-def read_root():
+# Define the templates directory path
+templates_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'static')
+
+# Mount static files (CSS, JS)
+app.mount("/static", StaticFiles(directory=templates_dir), name="static")
+
+# Change your root endpoint to serve the HTML
+@app.get("/", response_class=FileResponse)
+def serve_frontend():
+    return FileResponse(os.path.join(templates_dir, "index.html"))
+
+# Change your API welcome message to a different route
+@app.get("/api")
+def api_root():
     return {"message": "Welcome to the Mushroom Classification API"}
 
 @app.get("/form-inputs")
