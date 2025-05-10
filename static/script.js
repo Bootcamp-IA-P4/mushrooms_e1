@@ -1,5 +1,9 @@
 // Update API paths
-const API_BASE_URL = window.location.origin;
+const isLocalhost = window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1";
+const API_BASE_URL = isLocalhost ? "http://127.0.0.1:8000" : window.location.origin;
+
+console.log(`API_BASE_URL configurada en: ${API_BASE_URL}`);
+
 let currentStep = 0;
 let totalSteps = 0;
 const fieldsPerStep = 3;
