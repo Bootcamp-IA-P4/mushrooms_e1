@@ -42,8 +42,9 @@ def test_read_root():
     """Test del endpoint raíz"""
     response = client.get("/")
     assert response.status_code == 200
-    assert "message" in response.json()
-    assert response.json()["message"] == "Welcome to the Mushroom Classification API"
+    
+    # Verifica que la respuesta contiene el doctype y comienza con <html>
+    assert response.text.startswith("<!DOCTYPE html>")
 
 def test_get_form_inputs(form_inputs):
     """Test del endpoint /form-inputs"""
