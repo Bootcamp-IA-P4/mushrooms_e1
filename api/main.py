@@ -1,4 +1,6 @@
 from fastapi import FastAPI, Query, HTTPException
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse
 from pydantic import BaseModel, field_validator, ConfigDict
 from typing import Dict, List, Optional
 import pickle
@@ -79,8 +81,20 @@ class PredictionResponse(BaseModel):
     probability: float
     features: Dict
 
-@app.get("/")
-def read_root():
+# Define the templates directory path
+templates_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'static')
+
+# Mount static files (CSS, JS)
+app.mount("/static", StaticFiles(directory=templates_dir), name="static")
+
+# Change your root endpoint to serve the HTML
+@app.get("/", response_class=FileResponse)
+def serve_frontend():
+    return FileResponse(os.path.join(templates_dir, "index.html"))
+
+# Change your API welcome message to a different route
+@app.get("/api")
+def api_root():
     return {"message": "Welcome to the Mushroom Classification API"}
 
 @app.get("/form-inputs")
