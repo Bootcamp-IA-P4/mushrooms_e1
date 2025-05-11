@@ -1,44 +1,48 @@
-# 🌐 FASTAPI y Stack ASGI
-fastapi==0.115.12              # Framework web moderno y rápido para construir APIs
-uvicorn==0.34.2                # Servidor ASGI para correr apps FastAPI
-starlette==0.46.2              # Toolkit ASGI sobre el que está construido FastAPI
-httpx==0.28.1                  # Cliente HTTP asíncrono para consumir APIs externas
-httpcore==1.0.9                # Núcleo de transporte para httpx
-h11==0.16.0                    # Implementación de HTTP/1.1 (base para servidores ASGI)
-python-multipart==0.0.20      # Permite recibir archivos vía formularios en FastAPI
-anyio==4.9.0                   # Librería para concurrencia asincrónica (usada por httpx y Starlette)
-sniffio==1.3.1                 # Detecta el entorno async actual (usado por AnyIO)
+#FASTAPI y Stack ASGI
+fastapi==0.108.0              # Framework web moderno y rápido para construir APIs
+uvicorn==0.27.1               # Servidor ASGI para correr apps FastAPI
+starlette==0.36.3             # Toolkit ASGI sobre el que está construido FastAPI
+httpx==0.26.0                 # Cliente HTTP asíncrono para consumir APIs externas
+httpcore==1.0.2               # Núcleo de transporte para httpx
+h11==0.14.0                   # Implementación de HTTP/1.1 (base para servidores ASGI)
+python-multipart==0.0.6       # Permite recibir archivos vía formularios en FastAPI
+anyio==4.2.0                  # Librería para concurrencia asincrónica (usada por httpx y Starlette)
+sniffio==1.3.0                # Detecta el entorno async actual (usado por AnyIO)
 
-# 📊 Ciencia de Datos y Machine Learning
-numpy==2.2.5                   # Librería para operaciones matemáticas y arrays
-pandas==2.2.3                  # Manipulación y análisis de datos en tablas
-scikit-learn==1.6.1            # Algoritmos de machine learning clásicos
-scipy==1.15.2                  # Funciones científicas y estadísticas
-xgboost==3.0.0                 # Implementación eficiente de gradient boosting
-joblib==1.5.0                  # Serialización de modelos y paralelización en sklearn
-threadpoolctl==3.6.0           # Control de uso de hilos (usado por numpy y sklearn)
+#Ciencia de Datos y Machine Learning
+numpy==1.26.3                 # Librería para operaciones matemáticas y arrays
+pandas==2.1.4                 # Manipulación y análisis de datos en tablas
+scikit-learn==1.3.2           # Algoritmos de machine learning clásicos
+scipy==1.11.4                 # Funciones científicas y estadísticas
+xgboost==2.0.3                # Implementación eficiente de gradient boosting
+joblib==1.3.2                 # Serialización de modelos y paralelización en sklearn
+threadpoolctl==3.2.0          # Control de uso de hilos (usado por numpy y sklearn)
 
-# 🧪 Testing y Configuración
-pytest==8.3.5                  # Framework de pruebas para Python
-iniconfig==2.1.0               # Permite configurar pytest con archivos .ini
+#Testing y Configuración
+pytest==7.4.3                 # Framework de pruebas para Python
+iniconfig==2.0.0              # Permite configurar pytest con archivos .ini
 
-# 🧱 Validación de datos y Tipado
-pydantic==2.11.4               # Validación de datos y tipos (clave en FastAPI)
-pydantic_core==2.33.2          # Núcleo ultrarrápido de validación de Pydantic v2
-annotated-types==0.7.0         # Tipado avanzado para uso con Pydantic
-typing-inspection==0.4.0       # Utilidades para inspeccionar tipos genéricos
-typing_extensions==4.13.2      # Extensiones de typing para compatibilidad
+#Validación de datos y Tipado
+pydantic==2.5.2               # Validación de datos y tipos (clave en FastAPI)
+pydantic_core==2.14.5         # Núcleo ultrarrápido de validación de Pydantic v2
+annotated-types==0.6.0        # Tipado avanzado para uso con Pydantic
+typing-inspection==0.9.0      # Utilidades para inspeccionar tipos genéricos
+typing_extensions==4.8.0      # Extensiones de typing para compatibilidad
 
-# 🗓️ Manejo de Fechas y Zonas Horarias
-python-dateutil==2.9.0.post0   # Parsing flexible de fechas
-pytz==2025.2                   # Zonas horarias para pandas y datetime
-tzdata==2025.2                 # Base de datos de zonas horarias IANA
+#Manejo de Fechas y Zonas Horarias
+python-dateutil==2.8.2        # Parsing flexible de fechas
+pytz==2023.3.post1            # Zonas horarias para pandas y datetime
+tzdata==2023.4                # Base de datos de zonas horarias IANA
 
-# 🌍 Red, Codificación y Certificados
-idna==3.10                     # Codificación internacional de nombres de dominio
-certifi==2025.4.26             # Certificados SSL para conexiones seguras
+#Red, Codificación y Certificados
+idna==3.6                     # Codificación internacional de nombres de dominio
+certifi==2023.11.17           # Certificados SSL para conexiones seguras
 
-# ⚙️ Utilidades generales
-click==8.1.8                   # Librería para crear interfaces de línea de comandos
-packaging==25.0                # Comparación y análisis de versiones de paquetes
-six==1.17.0                    # Compatibilidad entre Python 2 y 3 (todavía usado por algunos paquetes)
+#Utilidades generales
+click==8.1.7                  # Librería para crear interfaces de línea de comandos
+packaging==23.2               # Comparación y análisis de versiones de paquetes
+six==1.16.0                   # Compatibilidad entre Python 2 y 3 (todavía usado por algunos paquetes)
+
+#Base de datos
+sqlalchemy==2.0.23            # ORM para bases de datos
+psycopg2-binary==2.9.9        # Driver para PostgreSQL (versión binaria sin necesidad de compilar)

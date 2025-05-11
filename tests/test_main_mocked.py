@@ -4,7 +4,7 @@ from fastapi.testclient import TestClient
 import numpy as np
 import json
 import os
-from api.main import app, MushoomFeatures
+from api.main import app, MushroomFeatures
 
 # Inicializa el cliente de pruebas
 client = TestClient(app)
