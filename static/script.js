@@ -430,10 +430,52 @@ function setupNavigation() {
     });
 }
 
-function setupDemoHistory() {
-    // Esta función podría conectarse a una base de datos en el futuro
-    // Por ahora, solo muestra datos de ejemplo o un mensaje de placeholder
+// Función para cargar las predicciones en la tabla de historial
+async function loadPredictions() {
+    const historyTableBody = document.getElementById("history-table-body");
+    historyTableBody.innerHTML = `<tr><td colspan="3">Cargando predicciones...</td></tr>`;
+
+    try {
+        const response = await fetch(`${API_BASE_URL}/predictions`);
+
+        if (!response.ok) {
+            throw new Error(`Error al obtener las predicciones: ${response.status}`);
+        }
+
+        const predictions = await response.json();
+        console.log("📦 Predicciones recibidas:", predictions);
+
+        // Si no hay predicciones
+        if (predictions.length === 0) {
+            historyTableBody.innerHTML = `<tr><td colspan="3">No hay predicciones registradas aún.</td></tr>`;
+            return;
+        }
+
+        // Limpiar la tabla antes de cargar los nuevos datos
+        historyTableBody.innerHTML = "";
+
+        // Cargar predicciones en la tabla
+        predictions.forEach(prediction => {
+            const row = document.createElement("tr");
+            const date = new Date(prediction.created_at).toLocaleString();
+            const confidence = prediction.probability ? `${(prediction.probability * 100).toFixed(2)}%` : "N/A";
+
+            row.innerHTML = `
+                <td>${date}</td>
+                <td>${prediction.result}</td>
+                <td>${confidence}</td>
+            `;
+            historyTableBody.appendChild(row);
+        });
+
+    } catch (error) {
+        console.error("❌ Error al cargar las predicciones:", error);
+        historyTableBody.innerHTML = `<tr><td colspan="3">Error al cargar las predicciones: ${error.message}</td></tr>`;
+    }
 }
+
+// Cargar las predicciones al cargar la página
+window.addEventListener("load", loadPredictions);
 
 function setupFormSubmission() {
     document.getElementById('mushroom-form').addEventListener('submit', async function(e) {
