@@ -1,6 +1,7 @@
-from sqlalchemy import Column, String, DateTime, ForeignKey
+from sqlalchemy import Column, String, Float, DateTime, ForeignKey
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.orm import declarative_base, relationship
+from sqlalchemy.sql import func
 import uuid
 from datetime import datetime
 
@@ -32,7 +33,8 @@ class Prediction(Base):
     id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
     mushroom_id = Column(UUID(as_uuid=True), ForeignKey('mushrooms.id'), nullable=False)
     prediction_result = Column(String, nullable=False)
-    created_at = Column(DateTime, default=datetime.utcnow)
+    probability = Column(Float, nullable=True)
+    created_at = Column(DateTime, default=func.now())
 
     mushroom = relationship('Mushroom', back_populates='predictions')
 

@@ -2,7 +2,7 @@
 const isLocalhost = window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1";
 const API_BASE_URL = isLocalhost ? "http://127.0.0.1:8000" : window.location.origin;
 
-console.log(`API_BASE_URL configurada en: ${API_BASE_URL}`);
+
 
 let currentStep = 0;
 let totalSteps = 0;
@@ -431,6 +431,7 @@ function setupNavigation() {
 }
 
 // Función para cargar las predicciones en la tabla de historial
+// Función para cargar las predicciones en la tabla de historial
 async function loadPredictions() {
     const historyTableBody = document.getElementById("history-table-body");
     historyTableBody.innerHTML = `<tr><td colspan="3">Cargando predicciones...</td></tr>`;
@@ -458,7 +459,9 @@ async function loadPredictions() {
         predictions.forEach(prediction => {
             const row = document.createElement("tr");
             const date = new Date(prediction.created_at).toLocaleString();
-            const confidence = prediction.probability ? `${(prediction.probability * 100).toFixed(2)}%` : "N/A";
+            const confidence = prediction.probability !== null 
+                ? `${(prediction.probability * 100).toFixed(2)}%` 
+                : "N/A";
 
             row.innerHTML = `
                 <td>${date}</td>
@@ -476,6 +479,7 @@ async function loadPredictions() {
 
 // Cargar las predicciones al cargar la página
 window.addEventListener("load", loadPredictions);
+
 
 function setupFormSubmission() {
     document.getElementById('mushroom-form').addEventListener('submit', async function(e) {
@@ -564,7 +568,8 @@ function init() {
     });
     
     setupFormSubmission();
-    setupDemoHistory();
+    loadPredictions()
+    
 }
 
 window.addEventListener('load', init);

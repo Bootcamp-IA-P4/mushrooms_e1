@@ -188,7 +188,7 @@ def predict_mushroom(features: MushroomFeatures):
             db.refresh(new_mushroom)
 
             # Save prediction
-            save_prediction(db, prediction, new_mushroom.id)
+            save_prediction(db, prediction, new_mushroom.id, probability)
             print(f"✅ Predicción guardada en la base de datos con ID: {new_mushroom.id}")
 
         except Exception as e:
@@ -219,7 +219,7 @@ def get_predictions(limit: int = 5):
         db.close()
 
         return [
-            {"id": str(pred.id), "result": pred.prediction_result, "created_at": pred.created_at}
+            {"id": str(pred.id), "result": pred.prediction_result, "probability": pred.probability, "created_at": pred.created_at}
             for pred in predictions
         ]
 
