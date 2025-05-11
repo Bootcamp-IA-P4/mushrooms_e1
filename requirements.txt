@@ -1,32 +1,44 @@
-annotated-types==0.7.0
-anyio==4.9.0
-certifi==2025.4.26
-click==8.1.8
-fastapi==0.115.12
-h11==0.16.0
-httpcore==1.0.9
-httpx==0.28.1
-idna==3.10
-iniconfig==2.1.0
-joblib==1.5.0
-numpy==2.2.5
-packaging==25.0
-pandas==2.2.3
-pluggy==1.5.0
-pydantic==2.11.4
-pydantic_core==2.33.2
-pytest==8.3.5
-python-dateutil==2.9.0.post0
-python-multipart==0.0.20
-pytz==2025.2
-scikit-learn==1.6.1
-scipy==1.15.2
-six==1.17.0
-sniffio==1.3.1
-starlette==0.46.2
-threadpoolctl==3.6.0
-typing-inspection==0.4.0
-typing_extensions==4.13.2
-tzdata==2025.2
-uvicorn==0.34.2
-xgboost==3.0.0
+# 🌐 FASTAPI y Stack ASGI
+fastapi==0.115.12              # Framework web moderno y rápido para construir APIs
+uvicorn==0.34.2                # Servidor ASGI para correr apps FastAPI
+starlette==0.46.2              # Toolkit ASGI sobre el que está construido FastAPI
+httpx==0.28.1                  # Cliente HTTP asíncrono para consumir APIs externas
+httpcore==1.0.9                # Núcleo de transporte para httpx
+h11==0.16.0                    # Implementación de HTTP/1.1 (base para servidores ASGI)
+python-multipart==0.0.20      # Permite recibir archivos vía formularios en FastAPI
+anyio==4.9.0                   # Librería para concurrencia asincrónica (usada por httpx y Starlette)
+sniffio==1.3.1                 # Detecta el entorno async actual (usado por AnyIO)
+
+# 📊 Ciencia de Datos y Machine Learning
+numpy==2.2.5                   # Librería para operaciones matemáticas y arrays
+pandas==2.2.3                  # Manipulación y análisis de datos en tablas
+scikit-learn==1.6.1            # Algoritmos de machine learning clásicos
+scipy==1.15.2                  # Funciones científicas y estadísticas
+xgboost==3.0.0                 # Implementación eficiente de gradient boosting
+joblib==1.5.0                  # Serialización de modelos y paralelización en sklearn
+threadpoolctl==3.6.0           # Control de uso de hilos (usado por numpy y sklearn)
+
+# 🧪 Testing y Configuración
+pytest==8.3.5                  # Framework de pruebas para Python
+iniconfig==2.1.0               # Permite configurar pytest con archivos .ini
+
+# 🧱 Validación de datos y Tipado
+pydantic==2.11.4               # Validación de datos y tipos (clave en FastAPI)
+pydantic_core==2.33.2          # Núcleo ultrarrápido de validación de Pydantic v2
+annotated-types==0.7.0         # Tipado avanzado para uso con Pydantic
+typing-inspection==0.4.0       # Utilidades para inspeccionar tipos genéricos
+typing_extensions==4.13.2      # Extensiones de typing para compatibilidad
+
+# 🗓️ Manejo de Fechas y Zonas Horarias
+python-dateutil==2.9.0.post0   # Parsing flexible de fechas
+pytz==2025.2                   # Zonas horarias para pandas y datetime
+tzdata==2025.2                 # Base de datos de zonas horarias IANA
+
+# 🌍 Red, Codificación y Certificados
+idna==3.10                     # Codificación internacional de nombres de dominio
+certifi==2025.4.26             # Certificados SSL para conexiones seguras
+
+# ⚙️ Utilidades generales
+click==8.1.8                   # Librería para crear interfaces de línea de comandos
+packaging==25.0                # Comparación y análisis de versiones de paquetes
+six==1.17.0                    # Compatibilidad entre Python 2 y 3 (todavía usado por algunos paquetes)
