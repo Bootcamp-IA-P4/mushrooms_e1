@@ -3,9 +3,9 @@ from .models import Prediction
 from sqlalchemy import desc
 
 # Guardamos una nueva predicción
-def save_prediction(db: Session, prediction_result: str, mushroom_id: str):
+def save_prediction(db: Session, prediction_result: str):
     new_prediction = Prediction(
-        mushroom_id=mushroom_id,
+        mushroom_id=None,  
         prediction_result=prediction_result
     )
     db.add(new_prediction)
