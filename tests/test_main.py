@@ -4,7 +4,7 @@ import os
 import json
 import pickle
 import pandas as pd
-from api.main import app, MushoomFeatures
+from api.main import app, MushroomFeatures
 
 # Inicializa el cliente de pruebas
 client = TestClient(app)
@@ -101,13 +101,13 @@ def test_mushroom_features_validation(form_inputs):
     }
     
     # Esto no debería lanzar una excepción
-    features = MushoomFeatures(**valid_data)
+    features = MushroomFeatures(**valid_data)
     
     # Test con datos inválidos
     with pytest.raises(ValueError):
         invalid_data = valid_data.copy()
         invalid_data["odor"] = "invalid_value"
-        MushoomFeatures(**invalid_data)
+        MushroomFeatures(**invalid_data)
 
 # TESTS DE INTEGRACIÓN
 def test_model_loaded():
