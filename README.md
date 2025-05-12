@@ -206,10 +206,16 @@ pip install -r requirements.txt
 jupyter notebook eda/eda.ipynb
 ```
 
-### 5️⃣ Start the Streamlit 
+### 5️⃣ Run app
 
 ```bash
-streamlit run app/app.py
+uvicorn api.main:app --reload
+```
+
+### 6️⃣ Run test
+
+```bash
+pytest
 ```
 
 ## 🚀 Deployment
