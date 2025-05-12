@@ -21,7 +21,7 @@ Para comenzar, hemos cargado y revisado los datasets, asegurándonos de entender
 
 A continuación, se presenta un mapa de calor que nos permite identificar rápidamente la presencia de valores nulos en las columnas del dataset:
 
-![Mapa de calor de valores nulos por columna](static/img/heatmap_nulls.png)
+![Mapa de calor de valores nulos por columna](data/reports/img/heatmap_nulls.png)
 
 ### 2.2 Matriz de Correlación: V de Cramér
 
@@ -29,13 +29,13 @@ Para entender mejor las relaciones entre las variables categóricas, calculamos 
 
 La matriz completa se presenta a continuación:
 
-![Matriz de V de Cramér entre variables categóricas](static/img/cramers_matrix.png)
+![Matriz de V de Cramér entre variables categóricas](data/reports/img/cramers_matrix.png)
 
 ### 2.3 Enfoque en Correlaciones Fuertes
 
 Finalmente, filtramos aquellas relaciones con un valor de V de Cramér igual o superior a 0.7. Este umbral nos ayuda a centrar la atención en las variables más relevantes y con mayor potencial predictivo:
 
-![Matriz de V de Cramér (correlaciones ≥ 0.7)](static/img/high_corr_matrix.png)
+![Matriz de V de Cramér (correlaciones ≥ 0.7)](data/reports/img/high_corr_matrix.png)
 
 ---
 
